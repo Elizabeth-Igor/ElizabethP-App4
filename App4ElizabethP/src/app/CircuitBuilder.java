@@ -14,13 +14,10 @@ import java.util.List;
 
 public class CircuitBuilder {
 
-    private static final char fSep = File.separatorChar;
-    private static final String cheminFichier = System.getProperty("user.dir") + fSep + "src" + fSep + "donnees" + fSep + "fichiers_json" + fSep + "reseau_secours_hopital.json";
+    //private static final char fSep = File.separatorChar;
+    //private static final String cheminFichier = System.getProperty("user.dir") + fSep + "src" + fSep + "donnees" + fSep + "fichiers_json" + fSep + "reseau_secours_hopital.json";
     private ArrayList<Composant> composants;
 
-    public CircuitBuilder (){
-
-    }
 
 
     public Composant construireCircuit(String cheminFichier){
@@ -58,9 +55,6 @@ public class CircuitBuilder {
         }
 
         throw new IllegalArgumentException("Type de circuit inconnu : " + type);
-        }
     }
 
-
-}
 }
