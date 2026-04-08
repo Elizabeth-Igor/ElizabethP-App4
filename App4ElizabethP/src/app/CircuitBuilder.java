@@ -23,8 +23,8 @@ public class CircuitBuilder {
             //composants = new ArrayList<>();
             ObjectMapper mapper = new ObjectMapper();
             JsonNode donnees = mapper.readTree(new File(cheminFichier));
-            String type = mapper.get("circuit");
-            return lireComposant(donnees);
+            JsonNode type = donnees.get("circuit");
+            lireComposant(type);
         } catch (IOException e) {
             System.err.println("Erreur de lecture : " + e.getMessage());
         }
