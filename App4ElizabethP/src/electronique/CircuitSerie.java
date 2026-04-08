@@ -4,9 +4,16 @@ import java.util.ArrayList;
 
 public class CircuitSerie extends Circuit{
 
-    private ArrayList
+    public CircuitSerie(ArrayList<Composant> composantlist) {
+        super(composantlist);
+    }
 
-    public CircuitSerie(List<Composant> composantlist) {
-
+    @Override
+    public double calculerResistance(){
+        double rTotal = 0;
+        for (int i = 0; i < composants.size(); i++){
+            rTotal += composants.get(i).calculerResistance();
+        }
+        return rTotal;
     }
 }

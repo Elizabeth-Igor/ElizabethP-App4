@@ -1,8 +1,8 @@
 package electronique;
 
-public class Resistance {
+public class Resistance extends Composant{
 
-    public double resistance;
+    private double resistance;
 
     public Resistance (double resistance){
         setResistance(resistance);
@@ -23,6 +23,7 @@ public class Resistance {
         return resistance >= 0;
     }
 
+    @Override
     public double calculerResistance(){
         return getResistance();
     }

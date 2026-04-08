@@ -1,14 +1,14 @@
 package electronique;
 import java.util.*;
 
-public abstract class Circuit {
+public abstract class Circuit extends Composant {
 
 
-    private ArrayList<Composant> composants;
+    protected ArrayList<Composant> composants;
 
 
-    public Circuit(List<Composant> c){
-
+    public Circuit(ArrayList<Composant> c){
+        this.composants = c;
     }
 
 

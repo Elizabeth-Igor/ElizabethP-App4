@@ -1,10 +1,7 @@
 package electronique;
 
-public class Composant {
+public abstract class Composant {
 
-    private double composant;
+    public abstract double calculerResistance();
 
-    public Composant(double c){
-        this.composant = c;
-    }
 }
