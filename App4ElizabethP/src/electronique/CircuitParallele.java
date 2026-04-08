@@ -7,7 +7,7 @@ public class CircuitParallele extends Circuit{
 
     private ArrayList<Composant> composants;
 
-    public CircuitParallele (List<Composant> composantList){
+    public CircuitParallele (ArrayList<Composant> composantList){
         super(composantList);
     }
 

@@ -10,11 +10,10 @@ public class CircuitApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bonjour, quelle fichier voulez vous calculer? Taper le chiffre correspondant au fichier souhaiter.");
-        System.out.println("[1] : complexe_indistriel_zone_nord.json" + "[2] : eclairage_public_quartier.json" + "[3] : reseau_secours_hopital.json" );
+        System.out.println("[1] : complexe_industriel_zone_nord.json" + "\n" + "[2] : eclairage_public_quartier.json" + "\n" + "[3] : reseau_secours_hopital.json" );
         int choix1 = sc.nextInt();
-        CircuitBuilder.construireCircuit(cheminFichier(choix1));
-
-
+        CircuitBuilder c = new CircuitBuilder();
+        c.construireCircuit(cheminFichier(choix1));
 
 
     }
@@ -22,7 +21,7 @@ public class CircuitApp {
     public static String cheminFichier(int i) {
         String s;
         if (i == 1) {
-            s = "complexe_indistriel_zone_nord.json";
+            s = "complexe_industriel_zone_nord.json";
         } else if (i == 2) {
             s = "eclairage_public_quartier.json";
         } else if (i == 3) {
