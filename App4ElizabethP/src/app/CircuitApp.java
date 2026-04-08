@@ -7,18 +7,22 @@ public class CircuitApp {
 
     private static final char fSep = File.separatorChar;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public void main(String[] args) {
         System.out.println("Bonjour, quelle fichier voulez vous calculer? Taper le chiffre correspondant au fichier souhaiter.");
+        choixFichier();
+        while ()
+    }
+
+    public void choixFichier (){
+        Scanner sc = new Scanner(System.in);
         System.out.println("[1] : complexe_industriel_zone_nord.json" + "\n" + "[2] : eclairage_public_quartier.json" + "\n" + "[3] : reseau_secours_hopital.json" );
         int choix1 = sc.nextInt();
         CircuitBuilder c = new CircuitBuilder();
         c.construireCircuit(cheminFichier(choix1));
-
-
+        System.out.println("Taper [R] si vous souhaitez tester un autre fichier");
     }
 
-    public static String cheminFichier(int i) {
+    public String cheminFichier(int i) {
         String s;
         if (i == 1) {
             s = "complexe_industriel_zone_nord.json";
