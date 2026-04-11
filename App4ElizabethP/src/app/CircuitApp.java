@@ -10,7 +10,7 @@ public class CircuitApp {
     public void main(String[] args) {
         System.out.println("Bonjour, quelle fichier voulez vous calculer? Taper le chiffre correspondant au fichier souhaiter.");
         choixFichier();
-        while ()
+        //while ()
     }
 
     public void choixFichier (){
@@ -19,7 +19,7 @@ public class CircuitApp {
         int choix1 = sc.nextInt();
         CircuitBuilder c = new CircuitBuilder();
         c.construireCircuit(cheminFichier(choix1));
-        System.out.println("Taper [R] si vous souhaitez tester un autre fichier");
+        //System.out.println("Taper [R] si vous souhaitez tester un autre fichier");
     }
 
     public String cheminFichier(int i) {
@@ -33,7 +33,7 @@ public class CircuitApp {
         } else {
             throw new IllegalArgumentException("Chiffre invalide");
         }
-        String c = System.getProperty("user.dir") + fSep + "src" + fSep + "donnees" + fSep + "fichiers_json" + fSep + s;
+        String c = System.getProperty("user.dir") + fSep + "App4ElizabethP" + fSep + "src" + fSep + "donnees" + fSep + "fichiers_json" + fSep + s;
         return c;
     }
 }

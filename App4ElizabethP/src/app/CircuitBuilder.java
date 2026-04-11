@@ -30,7 +30,29 @@ public class CircuitBuilder {
     }
 
 
-//    private Composant lireComposant(JsonNode node){
+    private Composant lireComposant(JsonNode node){
+        ArrayList<Composant> composant = new ArrayList<>();
+        String type = node.get("type").asText();
+
+        if (Objects.equals(type,"resistance")) {
+            return new Resistance(node.get("valeur").asDouble());
+
+        } else if (Objects.equals(type, "parallele")) {
+            for (JsonNode composantNode : node.get("composants")) {
+                composant.add(lireComposant(composantNode));
+            }
+            return new CircuitParallele(composant);
+        } else if (Objects.equals(type, "serie")) {
+            for (JsonNode composantNode : node.get("composants")) {
+                composant.add(lireComposant(composantNode));
+            }
+            return new CircuitSerie(composant);
+        }
+
+        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
+    }
+
+    //    private Composant lireComposant(JsonNode node){
 //        String type = node.get("type").asText();
 //
 //        if ("resistance".equals(type)) {
@@ -55,29 +77,4 @@ public class CircuitBuilder {
 //
 //        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
 //    }
-
-
-    private Composant lireComposant(JsonNode node){
-        String type = node.get("type").asText();
-
-        if (Objects.equals(type,"resistance")) {
-            return new Resistance(node.get("valeur").asDouble());
-
-        } else if (Objects.equals(type, "parallele")) {
-            ArrayList<Composant> composant = new ArrayList<>();
-            for (JsonNode composantNode : node.get("composants")) {
-                composant.add(lireComposant(composantNode));
-            }
-            return new CircuitParallele(composant);
-        } else if (Objects.equals(type, "serie")) {
-            ArrayList<Composant> composant = new ArrayList<>();
-            for (JsonNode composantNode : node.get("composants")) {
-                composant.add(lireComposant(composantNode));
-            }
-            return new CircuitSerie(composant);
-        }
-
-        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
-    }
-
 }
