@@ -18,7 +18,8 @@ public class CircuitApp {
         System.out.println("[1] : complexe_industriel_zone_nord.json" + "\n" + "[2] : eclairage_public_quartier.json" + "\n" + "[3] : reseau_secours_hopital.json" );
         int choix1 = sc.nextInt();
         CircuitBuilder c = new CircuitBuilder();
-        c.construireCircuit(cheminFichier(choix1));
+        System.out.println(c.construireCircuit(cheminFichier(choix1)).calculerResistance() + "Ω");
+
         //System.out.println("Taper [R] si vous souhaitez tester un autre fichier");
     }
 

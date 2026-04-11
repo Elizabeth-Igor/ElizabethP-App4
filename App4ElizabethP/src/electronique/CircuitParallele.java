@@ -9,6 +9,7 @@ public class CircuitParallele extends Circuit{
 
     public CircuitParallele (ArrayList<Composant> composantList){
         super(composantList);
+        this.composants = composantList;
     }
 
 

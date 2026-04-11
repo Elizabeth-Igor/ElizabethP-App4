@@ -6,6 +6,7 @@ public class CircuitSerie extends Circuit{
 
     public CircuitSerie(ArrayList<Composant> composantlist) {
         super(composantlist);
+        this.composants = composantlist;
     }
 
     @Override

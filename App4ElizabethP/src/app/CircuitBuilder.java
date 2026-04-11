@@ -5,7 +5,6 @@ import electronique.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -17,16 +16,16 @@ public class CircuitBuilder {
     public CircuitBuilder (){
     }
 
-    public void construireCircuit(String cheminFichier){
+    public Composant construireCircuit(String cheminFichier){
         try {
-            //composants = new ArrayList<>();
             ObjectMapper mapper = new ObjectMapper();
             JsonNode donnees = mapper.readTree(new File(cheminFichier));
             JsonNode type = donnees.get("circuit");
-            lireComposant(type);
+            return lireComposant(type);
         } catch (IOException e) {
             System.err.println("Erreur de lecture : " + e.getMessage());
         }
+        return null;
     }
 
 
@@ -47,34 +46,34 @@ public class CircuitBuilder {
                 composant.add(lireComposant(composantNode));
             }
             return new CircuitSerie(composant);
+        }else {
+            throw new IllegalArgumentException("Type de circuit inconnu : " + type);
         }
-
-        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
     }
 
-    //    private Composant lireComposant(JsonNode node){
+//    private double lireComposant(JsonNode node){
+//        ArrayList<Composant> composant = new ArrayList<>();
+//        double t = 0;
 //        String type = node.get("type").asText();
-//
-//        if ("resistance".equals(type)) {
-//            return new Resistance(node.get("valeur").asDouble());
-//
-//        } else if (Objects.equals(type,"resitance")) {
-//            return new Resistance(node.get("valeur").asDouble());
-//
-//        } else if ("parallele".equals(type)) {
-//            ArrayList<Composant> composant = new ArrayList<>();
+//        if (Objects.equals(type,"resistance")) {
+//            Resistance r = new Resistance(node.get("valeur").asDouble());
+//            t = r.calculerResistance();
+//        } else if (Objects.equals(type, "parallele")) {
 //            for (JsonNode composantNode : node.get("composants")) {
 //                composant.add(lireComposant(composantNode));
 //            }
-//            return new CircuitParallele(composant);
-//        } else if ("serie".equals(type)) {
-//            ArrayList<Composant> composant = new ArrayList<>();
+//            CircuitParallele c = new CircuitParallele(composant);
+//            t = c.calculerResistance();
+//        } else if (Objects.equals(type, "serie")) {
 //            for (JsonNode composantNode : node.get("composants")) {
 //                composant.add(lireComposant(composantNode));
 //            }
-//            return new CircuitSerie(composant);
+//            CircuitSerie s = new CircuitSerie(composant);
+//            t = s.calculerResistance();
 //        }
+//        return t;
 //
 //        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
 //    }
+
 }
