@@ -13,9 +13,6 @@ public class CircuitBuilder {
     private ArrayList<Composant> composants;
 
 
-    public CircuitBuilder (){
-    }
-
     public Composant construireCircuit(String cheminFichier){
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -50,30 +47,5 @@ public class CircuitBuilder {
             throw new IllegalArgumentException("Type de circuit inconnu : " + type);
         }
     }
-
-//    private double lireComposant(JsonNode node){
-//        ArrayList<Composant> composant = new ArrayList<>();
-//        double t = 0;
-//        String type = node.get("type").asText();
-//        if (Objects.equals(type,"resistance")) {
-//            Resistance r = new Resistance(node.get("valeur").asDouble());
-//            t = r.calculerResistance();
-//        } else if (Objects.equals(type, "parallele")) {
-//            for (JsonNode composantNode : node.get("composants")) {
-//                composant.add(lireComposant(composantNode));
-//            }
-//            CircuitParallele c = new CircuitParallele(composant);
-//            t = c.calculerResistance();
-//        } else if (Objects.equals(type, "serie")) {
-//            for (JsonNode composantNode : node.get("composants")) {
-//                composant.add(lireComposant(composantNode));
-//            }
-//            CircuitSerie s = new CircuitSerie(composant);
-//            t = s.calculerResistance();
-//        }
-//        return t;
-//
-//        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
-//    }
 
 }
